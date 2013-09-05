@@ -1,0 +1,66 @@
+
+Explicit construction:
+Socket::Socket() with port: 21
+SocketManager::SocketManager(const IP_address&, const Port&)
+Socket::open()
+
+Heap construction:
+Socket::Socket() with port: 127
+SocketManager::SocketManager(const IP_address&, const Port&)
+Socket::open()
+
+Initialisation with an existing object:
+SocketManager::SocketManager(const SocketManager&)
+
+NRV optimisation:
+create_SocketManager(IP_address, Port)
+Socket::Socket() with port: 2222
+SocketManager::SocketManager(const IP_address&, const Port&)
+Socket::open()
+
+Make function into existing object:
+SocketManager::SocketManager()
+make_SocketManager(IP_address, Port)
+Socket::Socket() with port: 56
+SocketManager::SocketManager(const IP_address&, const Port&)
+Socket::open()
+Socket::write() with buffer: Sending data...
+SocketManager::operator=(SocketManager&&)
+SocketManager::~SocketManager()
+
+Make function into new object:
+make_SocketManager(IP_address, Port)
+Socket::Socket() with port: 1234
+SocketManager::SocketManager(const IP_address&, const Port&)
+Socket::open()
+Socket::write() with buffer: Sending data...
+
+Pass object by value:
+SocketManager::SocketManager(const SocketManager&)
+use_SocketManager(SocketManager)
+Socket::write() with buffer: Sending data...
+SocketManager::~SocketManager()
+Socket::close()
+Socket::~Socket() with port: 21
+
+Deleting heap object:
+SocketManager::~SocketManager()
+Socket::close()
+Socket::~Socket() with port: 127
+
+END OF PROGRAM
+SocketManager::~SocketManager()
+Socket::close()
+Socket::~Socket() with port: 1234
+SocketManager::~SocketManager()
+Socket::close()
+Socket::~Socket() with port: 56
+SocketManager::~SocketManager()
+Socket::close()
+Socket::~Socket() with port: 2222
+SocketManager::~SocketManager()
+Socket::close()
+Socket::~Socket() with port: 21
+SocketManager::~SocketManager()
+Socket::close()
+Socket::~Socket() with port: 21
